@@ -1,0 +1,60 @@
+  function initForm(){
+    root.querySelectorAll('form').forEach(form=>{
+      listen(form,'submit',event=>{event.preventDefault();if(!form.reportValidity())return;
+        const wrapper=form.closest('.w-form');const success=wrapper?.querySelector('.w-form-done');
+        if(success){form.style.display='none';success.style.display='flex';success.setAttribute('role','status');success.querySelectorAll('p').forEach((p,i)=>{if(i===0)p.textContent=document.documentElement.lang==='en'?'Demo request received. No message was sent.':'Демо-заявку прийнято. Повідомлення не надіслано.'});}
+      });
+      form.querySelectorAll('[data-form-btn]').forEach(button=>listen(button,'click',event=>{event.preventDefault();form.requestSubmit()}));
+    });
+    root.querySelectorAll('.input_field').forEach(input=>{const label=input.parentElement.querySelector('.input_label');listen(input,'focus',()=>label?.classList.add('focused'));listen(input,'blur',()=>{if(!input.value.trim())label?.classList.remove('focused')});});
+  }
+  function initSoundToggle(){
+    const control=root.querySelector('[data-sound-toggle]');if(!control)return;
+    const audio=new Audio('/assets/assets.sondaven.com/carpathian-whispers-hutsul-ambient.mp3');audio.loop=true;audio.volume=.25;
+    control.setAttribute('role','button');control.setAttribute('tabindex','0');control.setAttribute('aria-label','Toggle ambient sound');control.setAttribute('aria-pressed','false');
+    const toggle=()=>{if(audio.paused){audio.play().then(()=>{control.setAttribute('aria-pressed','true');control.classList.add('is-playing')}).catch(()=>{})}else{audio.pause();control.setAttribute('aria-pressed','false');control.classList.remove('is-playing')}};
+    listen(control,'click',toggle);listen(control,'keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle()}});cleanups.push(()=>{audio.pause();audio.src=''});
+  }
+  function initModalVimVideo(){
+    root.querySelectorAll('[data-modal-vim-video-btn]').forEach(button=>listen(button,'click',event=>{
+      const name=button.getAttribute('data-modal-vim-video-btn');const modal=root.querySelector(`[data-modal-vim-video="${name}"]`);if(!modal)return;
+      event.preventDefault();modal.style.display='block';modal.querySelector('.modal_vim-video').style.display='flex';modal.setAttribute('data-open','true');lockScroll();
+    }));
+    root.querySelectorAll('[data-modal-close]').forEach(button=>listen(button,'click',event=>{event.preventDefault();const modal=button.closest('[data-modal-vim-video]');if(modal){modal.style.display='none';modal.removeAttribute('data-open');unlockScroll()}}));
+  }
+  initLenis();
+  listen(window,'resize',()=>{clearTimeout(resizeTimeout);resizeTimeout=setTimeout(()=>{ScrollTrigger.refresh(true);initTabsHilight()},100)});
+  // Keep native Next.js navigation; section anchors use the smooth-scroll controller.
+  listen(root,'click',event=>{
+    const a=event.target.closest?.('a[href]');if(!a)return;const href=a.getAttribute('href');
+    if(href==='#'){event.preventDefault();return;}
+    if(href?.startsWith('#')){const target=root.querySelector(href);if(target){event.preventDefault();lenis.scrollTo(target,{offset:-70});history.replaceState(null,'',href)}else if(document.querySelector('[data-page-template]')?.getAttribute('data-page-template')!=='home'){event.preventDefault();navigate((location.pathname.startsWith('/en')?'/en':'/ua')+href)}}
+  });
+  // Cookie preference stays local and never activates third-party analytics.
+  const cookie=root.querySelector('[fs-cc="banner"]');if(cookie){if(localStorage.getItem('sondaven-cookie-choice'))cookie.style.display='none';cookie.querySelectorAll('[fs-cc="allow"],[fs-cc="deny"],[fs-cc="close"]').forEach(button=>listen(button,'click',event=>{event.preventDefault();localStorage.setItem('sondaven-cookie-choice','dismissed');cookie.style.display='none'}));}
+  initAllScenes();
+  const ready=Promise.all([framesPromise,globalSceneManager.ready(),document.fonts.ready]);
+  const reveal=()=>{
+    if(disposed||root.dataset.ready)return;
+    root.dataset.ready='true';
+    const preloader=root.querySelector('[data-preloader]');if(preloader)gsap.to(preloader,{autoAlpha:0,duration:.6,onComplete:()=>{preloader.style.display='none'}});
+    const transition=root.querySelector('.transition');if(transition)transition.style.display='none';
+    initScripts();
+    root.querySelectorAll('[data-intro="h"]').forEach(e=>animateTextH(e,'reveal',0));
+    root.querySelectorAll('[data-intro="p"]').forEach(e=>animateTextP(e,'reveal',0));
+    root.querySelectorAll('[data-intro="ctn"]').forEach(e=>animateCtn(e,'reveal',0));
+    root.querySelectorAll('[data-prevent-flicker]').forEach(e=>{e.style.visibility='visible'});
+    unlockScroll();ScrollTrigger.refresh();
+    if(location.hash){const el=root.querySelector(location.hash);if(el)setTimeout(()=>lenis?.scrollTo(el,{immediate:true,offset:-70}),200)}
+  };
+  ready.then(reveal);setTimeout(reveal,8000);
+  return ()=>{
+    disposed=true;delete root.dataset.ready;
+    globalSceneManager?.destroy();ScrollTrigger.getAll().forEach(trigger=>trigger.kill());
+    animations.forEach(animation=>animation.kill());tickers.forEach(fn=>baseGsap.ticker.remove(fn));
+    observers.forEach(observer=>observer.disconnect());cleanups.reverse().forEach(fn=>{try{fn()}catch{}});
+    timers.forEach(id=>window.clearTimeout(id));frames.forEach(id=>window.cancelAnimationFrame(id));
+    root.querySelectorAll('*').forEach(el=>{if(el._split){el._split.revert();delete el._split}});
+    document.documentElement.style.overflow='';document.body.style.overflow='';
+  };
+}

@@ -1,0 +1,27 @@
+// Original scene shaders and choreography, migrated to npm libraries and React lifecycle.
+import { gsap as baseGsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { CustomEase } from 'gsap/CustomEase';
+import { SplitText } from 'gsap/SplitText';
+import { Flip } from 'gsap/Flip';
+import BaseLenis from 'lenis';
+import BaseSwiper from 'swiper/bundle';
+
+export function mountExperience(root, navigate) {
+  let disposed=false;
+  const cleanups=[], observers=[], animations=new Set(), timers=new Set(), frames=new Set(), tickers=new Set();
+  const listen=(target,type,fn,options)=>{ if(!target)return; target.addEventListener(type,fn,options); cleanups.push(()=>target.removeEventListener(type,fn,options)); };
+  const requestAnimationFrame=fn=>{const id=window.requestAnimationFrame(time=>{frames.delete(id);if(!disposed)fn(time)});frames.add(id);return id;};
+  const setTimeout=(fn,delay,...args)=>{const id=window.setTimeout(()=>{timers.delete(id);if(!disposed)fn(...args)},delay);timers.add(id);return id;};
+  const setInterval=(fn,delay)=>{const id=window.setInterval(()=>{if(!disposed)fn()},delay);cleanups.push(()=>window.clearInterval(id));return id;};
+  const trackedObserver=Base=>class extends Base {constructor(...args){super(...args);observers.push(this)}};
+  const ResizeObserver=trackedObserver(window.ResizeObserver), IntersectionObserver=trackedObserver(window.IntersectionObserver), MutationObserver=trackedObserver(window.MutationObserver);
+  class Lenis extends BaseLenis {constructor(...args){super(...args);cleanups.push(()=>this.destroy())}}
+  class Swiper extends BaseSwiper {constructor(...args){super(...args);cleanups.push(()=>this.destroy(true,true))}}
+  const gsap=new Proxy(baseGsap,{get(target,key){if(['to','from','fromTo','set','timeline','delayedCall'].includes(key))return (...args)=>{const result=target[key](...args);animations.add(result);return result};if(key==='ticker')return {...target.ticker,add(fn,...args){tickers.add(fn);return target.ticker.add(fn,...args)}};return target[key]}});
+  gsap.registerPlugin(ScrollTrigger,CustomEase,SplitText,Flip);
+  gsap.config({nullTargetWarn:false});
+  let lenis=null,breakPoint=992,resizeTimeout=null,globalSceneManager=null,durS=.4,durM=.8,durL=1.2,stagger=.1,delayReveal=.2;
+  const isDayTime=true;
+  CustomEase.create('InOut','0.76,0,0.24,1');CustomEase.create('Out','0.25,1,0.5,1');CustomEase.create('In','0.5,0,0.75,0');CustomEase.create('Ease','0.25,0.1,0.25,1');CustomEase.create('Write','0.333,0,0.667,1');
+  const framesPromise=window.innerWidth>=breakPoint&&root.querySelector('[data-scroll-video]')?Promise.all(Array.from({length:120},(_,index)=>new Promise(resolve=>{const img=new Image();img.onload=()=>resolve(img);img.onerror=()=>resolve(null);img.src=`/assets/assets.sondaven.com/hero-video-new/${String(index).padStart(3,'0')}.webp`}))):Promise.resolve([]);

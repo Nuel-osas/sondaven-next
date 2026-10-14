@@ -1,0 +1,291 @@
+{
+  "date": "2026-10-14",
+  "framework": "Next.js App Router",
+  "pages": [
+    {
+      "device": "desktop",
+      "route": "/",
+      "passed": true
+    },
+    {
+      "device": "desktop",
+      "route": "/en",
+      "passed": true
+    },
+    {
+      "device": "desktop",
+      "route": "/ua/news/yaremche-ne-bukovel-kudi-investuvati-v-karpatah-u-2026-roci",
+      "passed": true
+    },
+    {
+      "device": "desktop",
+      "route": "/ua/news/turistichniy-ta-investiciyniy-potencial-yaremche",
+      "passed": true
+    },
+    {
+      "device": "desktop",
+      "route": "/ua/news/forbes-pro-son-daven",
+      "passed": true
+    },
+    {
+      "device": "desktop",
+      "route": "/ua/news",
+      "passed": true
+    },
+    {
+      "device": "desktop",
+      "route": "/ua/construction-progress/hid-budivnictva-son-daven-u-veresni-2026",
+      "passed": true
+    },
+    {
+      "device": "desktop",
+      "route": "/ua/construction-progress/hid-budivnictva-son-daven-u-serpni-2026",
+      "passed": true
+    },
+    {
+      "device": "desktop",
+      "route": "/ua/construction-progress/hid-budivnictva-son-daven-pidsumki-lipnya",
+      "passed": true
+    },
+    {
+      "device": "desktop",
+      "route": "/ua/construction-progress/son-daven-zvit-budivnictva-za-cherven",
+      "passed": true
+    },
+    {
+      "device": "desktop",
+      "route": "/ua/construction-progress/budivnictvo-son-daven-u-travni",
+      "passed": true
+    },
+    {
+      "device": "desktop",
+      "route": "/ua/construction-progress/dinamika-budivnictva-son-daven-u-kvitni",
+      "passed": true
+    },
+    {
+      "device": "desktop",
+      "route": "/ua/construction-progress/budivnytstva-son-daven-nova-legenda-investytsiinoi-nerukhomosti-v-karpatakh",
+      "passed": true
+    },
+    {
+      "device": "desktop",
+      "route": "/ua/construction-progress",
+      "passed": true
+    },
+    {
+      "device": "desktop",
+      "route": "/ua",
+      "passed": true
+    },
+    {
+      "device": "desktop",
+      "route": "/en/news/yaremche-ne-bukovel-kudi-investuvati-v-karpatah-u-2026-roci",
+      "passed": true
+    },
+    {
+      "device": "desktop",
+      "route": "/en/news/turistichniy-ta-investiciyniy-potencial-yaremche",
+      "passed": true
+    },
+    {
+      "device": "desktop",
+      "route": "/en/news/forbes-pro-son-daven",
+      "passed": true
+    },
+    {
+      "device": "desktop",
+      "route": "/en/news",
+      "passed": true
+    },
+    {
+      "device": "desktop",
+      "route": "/en/construction-progress/hid-budivnictva-son-daven-u-veresni-2026",
+      "passed": true
+    },
+    {
+      "device": "desktop",
+      "route": "/en/construction-progress/hid-budivnictva-son-daven-u-serpni-2026",
+      "passed": true
+    },
+    {
+      "device": "desktop",
+      "route": "/en/construction-progress/hid-budivnictva-son-daven-pidsumki-lipnya",
+      "passed": true
+    },
+    {
+      "device": "desktop",
+      "route": "/en/construction-progress/son-daven-zvit-budivnictva-za-cherven",
+      "passed": true
+    },
+    {
+      "device": "desktop",
+      "route": "/en/construction-progress/budivnictvo-son-daven-u-travni",
+      "passed": true
+    },
+    {
+      "device": "desktop",
+      "route": "/en/construction-progress/dinamika-budivnictva-son-daven-u-kvitni",
+      "passed": true
+    },
+    {
+      "device": "desktop",
+      "route": "/en/construction-progress/budivnytstva-son-daven-nova-legenda-investytsiinoi-nerukhomosti-v-karpatakh",
+      "passed": true
+    },
+    {
+      "device": "desktop",
+      "route": "/en/construction-progress",
+      "passed": true
+    },
+    {
+      "device": "mobile",
+      "route": "/",
+      "passed": true
+    },
+    {
+      "device": "mobile",
+      "route": "/en",
+      "passed": true
+    },
+    {
+      "device": "mobile",
+      "route": "/ua/news/yaremche-ne-bukovel-kudi-investuvati-v-karpatah-u-2026-roci",
+      "passed": true
+    },
+    {
+      "device": "mobile",
+      "route": "/ua/news/turistichniy-ta-investiciyniy-potencial-yaremche",
+      "passed": true
+    },
+    {
+      "device": "mobile",
+      "route": "/ua/news/forbes-pro-son-daven",
+      "passed": true
+    },
+    {
+      "device": "mobile",
+      "route": "/ua/news",
+      "passed": true
+    },
+    {
+      "device": "mobile",
+      "route": "/ua/construction-progress/hid-budivnictva-son-daven-u-veresni-2026",
+      "passed": true
+    },
+    {
+      "device": "mobile",
+      "route": "/ua/construction-progress/hid-budivnictva-son-daven-u-serpni-2026",
+      "passed": true
+    },
+    {
+      "device": "mobile",
+      "route": "/ua/construction-progress/hid-budivnictva-son-daven-pidsumki-lipnya",
+      "passed": true
+    },
+    {
+      "device": "mobile",
+      "route": "/ua/construction-progress/son-daven-zvit-budivnictva-za-cherven",
+      "passed": true
+    },
+    {
+      "device": "mobile",
+      "route": "/ua/construction-progress/budivnictvo-son-daven-u-travni",
+      "passed": true
+    },
+    {
+      "device": "mobile",
+      "route": "/ua/construction-progress/dinamika-budivnictva-son-daven-u-kvitni",
+      "passed": true
+    },
+    {
+      "device": "mobile",
+      "route": "/ua/construction-progress/budivnytstva-son-daven-nova-legenda-investytsiinoi-nerukhomosti-v-karpatakh",
+      "passed": true
+    },
+    {
+      "device": "mobile",
+      "route": "/ua/construction-progress",
+      "passed": true
+    },
+    {
+      "device": "mobile",
+      "route": "/ua",
+      "passed": true
+    },
+    {
+      "device": "mobile",
+      "route": "/en/news/yaremche-ne-bukovel-kudi-investuvati-v-karpatah-u-2026-roci",
+      "passed": true
+    },
+    {
+      "device": "mobile",
+      "route": "/en/news/turistichniy-ta-investiciyniy-potencial-yaremche",
+      "passed": true
+    },
+    {
+      "device": "mobile",
+      "route": "/en/news/forbes-pro-son-daven",
+      "passed": true
+    },
+    {
+      "device": "mobile",
+      "route": "/en/news",
+      "passed": true
+    },
+    {
+      "device": "mobile",
+      "route": "/en/construction-progress/hid-budivnictva-son-daven-u-veresni-2026",
+      "passed": true
+    },
+    {
+      "device": "mobile",
+      "route": "/en/construction-progress/hid-budivnictva-son-daven-u-serpni-2026",
+      "passed": true
+    },
+    {
+      "device": "mobile",
+      "route": "/en/construction-progress/hid-budivnictva-son-daven-pidsumki-lipnya",
+      "passed": true
+    },
+    {
+      "device": "mobile",
+      "route": "/en/construction-progress/son-daven-zvit-budivnictva-za-cherven",
+      "passed": true
+    },
+    {
+      "device": "mobile",
+      "route": "/en/construction-progress/budivnictvo-son-daven-u-travni",
+      "passed": true
+    },
+    {
+      "device": "mobile",
+      "route": "/en/construction-progress/dinamika-budivnictva-son-daven-u-kvitni",
+      "passed": true
+    },
+    {
+      "device": "mobile",
+      "route": "/en/construction-progress/budivnytstva-son-daven-nova-legenda-investytsiinoi-nerukhomosti-v-karpatakh",
+      "passed": true
+    },
+    {
+      "device": "mobile",
+      "route": "/en/construction-progress",
+      "passed": true
+    }
+  ],
+  "interactions": [
+    "desktop: menu opens/closes",
+    "desktop: consultation form uses local dummy submission",
+    "desktop: consultation modal opens/closes",
+    "desktop: FAQ expands and collapses",
+    "desktop: gallery advances",
+    "desktop: native Next.js language navigation",
+    "mobile: menu opens/closes",
+    "mobile: consultation form uses local dummy submission",
+    "mobile: consultation modal opens/closes",
+    "mobile: FAQ expands and collapses",
+    "mobile: gallery advances",
+    "mobile: native Next.js language navigation"
+  ],
+  "passed": true
+}

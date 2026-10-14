@@ -1,0 +1,9 @@
+[data-master-preloader]{display:none!important}
+[data-experience]>.transition-wrapper{min-height:100vh}
+[data-open="true"]{display:block!important}
+[data-modal-vim-video]{display:none}
+[data-modal-vim-video] .modal_vim-video{position:fixed;inset:0;z-index:1000}
+button:focus-visible,a:focus-visible,[role="button"]:focus-visible{outline:2px solid currentColor;outline-offset:5px}
+[data-sound-toggle].is-playing .sound_list_item{animation:sound-bar .65s ease-in-out infinite alternate}
+[data-sound-toggle].is-playing .sound_list_item:nth-child(2n){animation-delay:.3s}
+@keyframes sound-bar{to{transform:scaleY(.3)}}
